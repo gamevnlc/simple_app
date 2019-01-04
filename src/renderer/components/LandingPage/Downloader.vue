@@ -7,10 +7,9 @@
                 </b-form-input>
             </b-form-group>
             <button type="button" class="btn btn-primary" data-style="expand-right" id="js-btn-get-info"
-                    v-on:click="getInfo">
-                <span class="ladda-label">Get Info</span>
+                    v-on:click="getVideoInfo">
+                <span class="ladda-label">Get Video Info</span>
             </button>
-
         </b-form>
     </div>
 </template>
@@ -26,8 +25,19 @@
       }
     },
     methods: {
-      getInfo: function () {
-        console.log(this.form.url)
+      getVideoInfo: function () {
+        const validateUrl = url => /^(?:https?:\/\/)?(w{3})?\.?youtube\.com/.test(url)
+        if (!validateUrl(this.form.url)) {
+          this.$Swal({
+            title: 'Please enter a valid Youtube URL',
+            type: 'error',
+            position: 'top-end'
+          })
+        } else {
+          const youtubeUrl = this.form.url
+          const videoId = youtubeUrl.split('?')[1].match(/v=([^&]+)/)[1]
+          console.log(videoId)
+        }
       }
     }
   }
