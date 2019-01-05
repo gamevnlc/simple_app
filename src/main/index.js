@@ -16,6 +16,7 @@ const winURL = process.env.NODE_ENV === 'development'
   : `file://${__dirname}/index.html`
 
 function createWindow () {
+  // require('../../server/index')()
   /**
    * Initial window options
    */

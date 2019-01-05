@@ -36,6 +36,22 @@
         } else {
           const youtubeUrl = this.form.url
           const videoId = youtubeUrl.split('?')[1].match(/v=([^&]+)/)[1]
+          this.$http({
+            method: 'POST',
+            url: 'http://localhost:12345/api/get-video-info',
+            data: {
+              video_id: videoId
+            }
+          }).then(res => {
+            let data = res.data.data
+            let videos = data.videos
+            console.log(videos)
+          }).catch(e => {
+            this.$Swal({
+              title: e.message,
+              type: 'error'
+            })
+          })
           console.log(videoId)
         }
       }
