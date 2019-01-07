@@ -6,7 +6,7 @@
                 <b-form-input v-model="form.url">
                 </b-form-input>
             </b-form-group>
-            <button type="button" class="btn btn-primary" data-style="expand-right" id="js-btn-get-info"
+            <button type="button" class="btn btn-primary ladda-button" data-style="expand-right" id="js-btn-get-info"
                     v-on:click="getVideoInfo">
                 <span class="ladda-label">Get Video Info</span>
             </button>
